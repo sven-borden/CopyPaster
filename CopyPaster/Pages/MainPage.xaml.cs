@@ -1,4 +1,5 @@
 ﻿using CopyPaster.Copy;
+using Microsoft.Toolkit.Uwp.UI.Animations;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -65,13 +66,26 @@ namespace CopyPaster
 
 		private void Grid_PointerEntered(object sender, PointerRoutedEventArgs e)
 		{
+			if (!isCompacted)
+				return;
 			if (CheckCompaction())
+			{
 				CompactionButton.Visibility = Visibility.Visible;
+				CompactionButton.Fade(1).StartAsync();
+			}
 		}
 
 		private void Grid_PointerExited(object sender, PointerRoutedEventArgs e)
 		{
+			if (!isCompacted)
+				return;
+			CompactionButton.Fade(0).StartAsync();
 			CompactionButton.Visibility = Visibility.Collapsed;
+		}
+
+		private void ListView_ItemClick(object sender, SelectionChangedEventArgs e)
+		{
+			cp.SetTextInClip(clipList.Clipings[(sender as ListView).SelectedIndex].Content);
 		}
 	}
 }

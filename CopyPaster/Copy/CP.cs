@@ -28,10 +28,37 @@ namespace CopyPaster.Copy
 
 		private async void Clipboard_ContentChanged(object sender, object e)
 		{
-			DataPackageView dataPackageView = Clipboard.GetContent();
-			if (dataPackageView.Contains(StandardDataFormats.Text))
+			try
 			{
-				list.AddCliping(await dataPackageView.GetTextAsync());
+				DataPackageView dataPackageView = Clipboard.GetContent();
+				
+				if (dataPackageView.Contains(StandardDataFormats.Text))
+				{
+					string tmp = await dataPackageView.GetTextAsync();
+					foreach (Cliping c in list.Clipings)
+						if (c.Content == tmp)
+							return;
+					list.AddCliping(tmp);
+				}
+			}
+			catch(Exception ex)
+			{
+
+			}
+		}
+
+		internal void SetTextInClip(string content)
+		{
+			try
+			{
+				DataPackage dataPackage = new DataPackage();
+				dataPackage.SetText(content);
+
+				Clipboard.SetContent(dataPackage);
+			}
+			catch (Exception ex)
+			{
+
 			}
 		}
 	}

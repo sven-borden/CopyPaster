@@ -20,10 +20,12 @@
 		</Grid.ChildrenTransitions>
 		
 		<ListView Grid.Row="0" ItemsSource="{x:Bind clipList.Clipings}"
-        HorizontalAlignment="Center" VerticalAlignment="Center">
+        HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="5" SelectionChanged="ListView_ItemClick">
 			<ListView.ItemTemplate>
 				<DataTemplate x:DataType="copy:Cliping">
-					<TextBlock Text="{x:Bind Content}"/>
+					<Grid HorizontalAlignment="Center">
+						<TextBlock Text="{x:Bind Content}" HorizontalAlignment="Stretch"/>
+					</Grid>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
@@ -31,7 +33,7 @@
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" x:Name="CompactionButton">
 			<Grid Margin="10">
 				<Ellipse Width="50" Height="50" Fill="LightGray" Tapped="Ellipse_Tapped" />
-				<FontIcon Glyph="&#xE939;" Tapped="Ellipse_Tapped"/>
+				<FontIcon Glyph="&#xE930;" Tapped="Ellipse_Tapped"/>
 			</Grid>
 		</StackPanel>
 	</Grid>
