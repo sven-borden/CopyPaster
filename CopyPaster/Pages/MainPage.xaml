@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="CopyPaster.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CopyPaster"
+	xmlns:copy="using:CopyPaster.Copy"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" PointerEntered="Grid_PointerEntered" PointerExited="Grid_PointerExited">
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ChildrenTransitions>
+			<TransitionCollection>
+				<EdgeUIThemeTransition />
+			</TransitionCollection>
+		</Grid.ChildrenTransitions>
+		
+		<ListView Grid.Row="0" ItemsSource="{x:Bind clipList.Clipings}"
+        HorizontalAlignment="Center" VerticalAlignment="Center">
+			<ListView.ItemTemplate>
+				<DataTemplate x:DataType="copy:Cliping">
+					<TextBlock Text="{x:Bind Content}"/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" x:Name="CompactionButton">
+			<Grid Margin="10">
+				<Ellipse Width="50" Height="50" Fill="LightGray" Tapped="Ellipse_Tapped" />
+				<FontIcon Glyph="&#xE939;" Tapped="Ellipse_Tapped"/>
+			</Grid>
+		</StackPanel>
+	</Grid>
+</Page>
