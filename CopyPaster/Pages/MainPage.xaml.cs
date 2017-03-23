@@ -33,7 +33,23 @@ namespace CopyPaster
 			SetList();
 			this.InitializeComponent();
 			CheckCompaction();
+			SetTimer();
         }
+
+		private void SetTimer()
+		{
+			DispatcherTimer timer = new DispatcherTimer();
+			timer.Interval = new TimeSpan(0, 0, 01);
+			timer.Tick += (e, t) =>
+			{
+				foreach(Cliping c in clipList.Clipings)
+				{
+					c.LastModified.AddMilliseconds(1);
+				}
+			};
+
+			timer.Start();
+		}
 
 		private void SetList()
 		{
@@ -59,27 +75,37 @@ namespace CopyPaster
 		private async void SetCompaction()
 		{
 			if (isCompacted)
+			{
+				StateIcon.Glyph = "\uE2B3";
 				await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
+				await UpPanel.Fade(0).StartAsync();
+				UpPanel.Visibility = Visibility.Collapsed;
+			}
 			else
+			{
+				UpPanel.Visibility = Visibility.Visible;
+				await UpPanel.Fade(1).StartAsync();
+				StateIcon.Glyph = "\uE2B4";
 				await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
+			}
 		}
 
-		private void Grid_PointerEntered(object sender, PointerRoutedEventArgs e)
+		private async void Grid_PointerEntered(object sender, PointerRoutedEventArgs e)
 		{
 			if (!isCompacted)
 				return;
 			if (CheckCompaction())
 			{
 				CompactionButton.Visibility = Visibility.Visible;
-				CompactionButton.Fade(1).StartAsync();
+				await CompactionButton.Fade(1).StartAsync();
 			}
 		}
 
-		private void Grid_PointerExited(object sender, PointerRoutedEventArgs e)
+		private async void Grid_PointerExited(object sender, PointerRoutedEventArgs e)
 		{
 			if (!isCompacted)
 				return;
-			CompactionButton.Fade(0).StartAsync();
+			await CompactionButton.Fade(0).StartAsync();
 			CompactionButton.Visibility = Visibility.Collapsed;
 		}
 
