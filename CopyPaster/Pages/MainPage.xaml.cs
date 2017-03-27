@@ -46,8 +46,6 @@ namespace CopyPaster
 				foreach(Cliping c in clipList.Clipings)
 				{
 					c.LastModified = c.LastModified.Add(new TimeSpan(10)) ;
-					DateTime r = c.LastModified;
-					Debug.WriteLine(r.Second);
 				}
 			};
 

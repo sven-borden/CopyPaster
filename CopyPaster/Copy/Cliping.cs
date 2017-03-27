@@ -57,14 +57,14 @@ namespace CopyPaster.Copy
 
 			double second = DateTime.Now.Subtract(thisdate).TotalSeconds;
 			if (second < 60)
-				return "A few second ";
+				return "A few seconds ago";
 			double minute = DateTime.Now.Subtract(thisdate).TotalMinutes;
 			if (minute < 60)
-				return minute + " minutes";
+				return ConvertMinute(minute);
 			double hour = DateTime.Now.Subtract(thisdate).TotalHours;
 			if (hour < 24)
-				return hour + " hours";
-			return "More than a day";
+				return hour + " hours ago";
+			return "More than a day ago";
 			
 			// Return the month value to pass to the target.
 		}
@@ -77,5 +77,55 @@ namespace CopyPaster.Copy
 		}
 
 		#endregion
+
+		private string ConvertMinute(double _minute)
+		{
+			string tmp = string.Empty;
+
+			try
+			{
+				int minute = Int32.Parse(_minute.ToString().Split('.')[0]);
+				if (minute < 10)
+				{
+					tmp = MinTable[(minute) - 1];
+					if (minute == 1)
+						tmp += " minute ago";
+					else
+						tmp += " minutes ago";
+				}
+				else
+				{
+					tmp = MinTable[minute / 10 - 1];
+					tmp += " minutes ago";
+				}
+			}
+			catch(Exception e)
+			{
+				Debug.WriteLine("ERROR" + e);
+			}
+			return tmp;
+		}
+
+		private string[] MinTable =
+		{
+			"one",
+			"two",
+			"three",
+			"four",
+			"five",
+			"six",
+			"seven",
+			"eight",
+			"nine",
+		};
+
+		private string[] TenTable =
+		{
+			"ten",
+			"twenty",
+			"thirty",
+			"fourty",
+			"fifty",
+		};
 	}
 }
