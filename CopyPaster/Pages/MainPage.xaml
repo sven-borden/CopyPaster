@@ -37,7 +37,7 @@
 						<Grid HorizontalAlignment="Center">
 							<StackPanel>
 								<TextBlock Text="{x:Bind Content}" Foreground="Gray" HorizontalAlignment="Stretch"/>
-								<TextBlock Text="{x:Bind LastModified, Converter={StaticResource StringFormatter}}" Foreground="LightGray" HorizontalAlignment="Center" FontSize="10"/>
+								<TextBlock Text="{Binding LastModified,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringFormatter}}" Foreground="LightGray" HorizontalAlignment="Center" FontSize="10"/>
 							</StackPanel>
 						</Grid>
 					</DataTemplate>

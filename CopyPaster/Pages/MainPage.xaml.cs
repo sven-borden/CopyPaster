@@ -2,6 +2,7 @@
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -44,7 +45,9 @@ namespace CopyPaster
 			{
 				foreach(Cliping c in clipList.Clipings)
 				{
-					c.LastModified.AddMilliseconds(1);
+					c.LastModified = c.LastModified.Add(new TimeSpan(10)) ;
+					DateTime r = c.LastModified;
+					Debug.WriteLine(r.Second);
 				}
 			};
 
