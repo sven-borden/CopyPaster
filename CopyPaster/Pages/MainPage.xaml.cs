@@ -78,7 +78,9 @@ namespace CopyPaster
 			if (isCompacted)
 			{
 				StateIcon.Glyph = "\uE2B3";
-				await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
+				ViewModePreferences compactOptions = ViewModePreferences.CreateDefault(ApplicationViewMode.CompactOverlay);
+				compactOptions.CustomSize = new Size(200, this.ActualHeight - 200);
+				await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay,compactOptions);
 				await UpPanel.Fade(0).StartAsync();
 				UpPanel.Visibility = Visibility.Collapsed;
 			}

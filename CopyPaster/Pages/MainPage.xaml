@@ -13,7 +13,6 @@
 	</Page.Resources>
 
 
-	<Border BorderBrush="LightGray" BorderThickness="3" CornerRadius="50">
 		<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" PointerEntered="Grid_PointerEntered" PointerExited="Grid_PointerExited">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
@@ -31,12 +30,12 @@
 			</Grid>
 
 			<ListView Grid.Row="1" ItemsSource="{x:Bind clipList.Clipings}"
-        HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="5" SelectionChanged="ListView_ItemClick">
+        HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" SelectionChanged="ListView_ItemClick">
 				<ListView.ItemTemplate>
 					<DataTemplate x:DataType="copy:Cliping">
 						<Grid HorizontalAlignment="Center">
 							<StackPanel>
-								<TextBlock Text="{x:Bind Content}" Foreground="Gray" HorizontalAlignment="Stretch"/>
+								<TextBlock Text="{x:Bind Content}" Foreground="Gray" HorizontalAlignment="Center"/>
 								<TextBlock Text="{Binding LastModified,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringFormatter}}" Foreground="LightGray" HorizontalAlignment="Center" FontSize="10"/>
 							</StackPanel>
 						</Grid>
@@ -59,5 +58,4 @@
 				</StackPanel>
 			</Grid>
 		</Grid>
-	</Border>
 </Page>

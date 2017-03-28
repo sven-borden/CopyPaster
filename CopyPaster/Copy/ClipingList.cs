@@ -19,7 +19,7 @@ namespace CopyPaster.Copy
 
 		public void AddCliping(string _content)
 		{
-			clipings.Add(new Cliping(_content));
+			clipings.Insert(0,new Cliping(_content));
 		}
 	}
 }
