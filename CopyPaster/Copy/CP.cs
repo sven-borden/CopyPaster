@@ -36,9 +36,16 @@ namespace CopyPaster.Copy
 				if (dataPackageView.Contains(StandardDataFormats.Text))
 				{
 					string tmp = await dataPackageView.GetTextAsync();
+					int index = 0;
 					foreach (Cliping c in list.Clipings)
+					{
 						if (c.Content == tmp)
+						{
+							list.MoveClipToTop(index);
 							return;
+						}
+						index++;
+					}
 					list.AddCliping(tmp);
 				}
 			}

@@ -35,8 +35,8 @@
 					<DataTemplate x:DataType="copy:Cliping">
 						<Grid HorizontalAlignment="Center">
 							<StackPanel>
-								<TextBlock Text="{x:Bind Content}" Foreground="Gray" HorizontalAlignment="Center"/>
-								<TextBlock Text="{Binding LastModified,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringFormatter}}" Foreground="LightGray" HorizontalAlignment="Center" FontSize="10"/>
+								<TextBlock Text="{x:Bind Content}" Foreground="Gray" HorizontalAlignment="Left"/>
+								<TextBlock Text="{Binding LastModified,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringFormatter}}" Foreground="LightGray" HorizontalAlignment="Left" FontSize="10"/>
 							</StackPanel>
 						</Grid>
 					</DataTemplate>

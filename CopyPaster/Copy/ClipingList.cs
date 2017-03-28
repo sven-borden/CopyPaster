@@ -21,5 +21,11 @@ namespace CopyPaster.Copy
 		{
 			clipings.Insert(0,new Cliping(_content));
 		}
+
+		internal void MoveClipToTop(int index)
+		{
+			clipings.Move(index, 0);
+			clipings[0].LastModified = DateTime.Now;
+		}
 	}
 }
