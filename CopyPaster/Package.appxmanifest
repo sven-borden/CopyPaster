@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="bcc906b8-93c4-47d5-8a8c-52e5341426b2" Publisher="CN=Sven Borden" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="bcc906b8-93c4-47d5-8a8c-52e5341426b2" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="62394glaglasven.Clipstory" Publisher="CN=A4CDA1AE-2891-435C-B73F-FCA7B39485F4" Version="1.1.2.0" />
+  <mp:PhoneIdentity PhoneProductId="cfece059-2111-485f-b515-aa7104f77085" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>CopyPaster</DisplayName>
-    <PublisherDisplayName>Sven Borden</PublisherDisplayName>
+    <DisplayName>Clipstory</DisplayName>
+    <PublisherDisplayName>glaglasven</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CopyPaster.App">
-      <uap:VisualElements DisplayName="CopyPaster" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="CopyPaster" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Clipstory" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="CopyPaster" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
