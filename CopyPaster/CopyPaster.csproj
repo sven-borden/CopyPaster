@@ -97,6 +97,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Copy\Cliping.cs" />
+    <Compile Include="Copy\ClipingImage.cs" />
     <Compile Include="Copy\ClipingList.cs" />
     <Compile Include="Copy\CP.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">

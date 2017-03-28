@@ -55,7 +55,7 @@ namespace CopyPaster
 		private void SetList()
 		{
 			clipList = new ClipingList();
-			cp.list = clipList;
+			cp.listText = clipList;
 			cp.Start();
 		}
 

@@ -28,22 +28,41 @@
 			<Grid Grid.Row="0" x:Name="UpPanel">
 				<TextBlock Text="Here are your last copy" Foreground="Gray" FontSize="30" HorizontalAlignment="Center"/>
 			</Grid>
-
-			<ListView Grid.Row="1" ItemsSource="{x:Bind clipList.Clipings}"
+		<Pivot Grid.Row="1">
+			<PivotItem Header="Text">
+				<ListView ItemsSource="{x:Bind clipList.Clipings}"
         HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" SelectionChanged="ListView_ItemClick">
-				<ListView.ItemTemplate>
-					<DataTemplate x:DataType="copy:Cliping">
-						<Grid HorizontalAlignment="Center">
-							<StackPanel>
-								<TextBlock Text="{x:Bind Content}" Foreground="Gray" HorizontalAlignment="Left"/>
-								<TextBlock Text="{Binding LastModified,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringFormatter}}" Foreground="LightGray" HorizontalAlignment="Left" FontSize="10"/>
-							</StackPanel>
-						</Grid>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
+					<ListView.ItemTemplate>
+						<DataTemplate x:DataType="copy:Cliping">
+							<Grid HorizontalAlignment="Center">
+								<StackPanel>
+									<TextBlock Text="{x:Bind Content}" Foreground="Gray" HorizontalAlignment="Left"/>
+									<TextBlock Text="{Binding LastModified,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringFormatter}}" Foreground="LightGray" HorizontalAlignment="Left" FontSize="10"/>
+								</StackPanel>
+							</Grid>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</PivotItem>
 
-			<Grid Grid.Row="2" x:Name="CompactionButton">
+			<PivotItem Header="Image">
+				<ListView ItemsSource="{x:Bind clipList.ClipingsImage}"
+        HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" SelectionChanged="ListView_ItemClick">
+					<ListView.ItemTemplate>
+						<DataTemplate x:DataType="copy:Cliping">
+							<Grid HorizontalAlignment="Center">
+								<StackPanel>
+									<Image Source="{x:Bind Content}"/>
+									<TextBlock Text="{Binding LastModified,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringFormatter}}" Foreground="LightGray" HorizontalAlignment="Left" FontSize="10"/>
+								</StackPanel>
+							</Grid>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</PivotItem>
+		</Pivot>
+
+		<Grid Grid.Row="2" x:Name="CompactionButton">
 				<Grid.Background>
 					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 						<GradientStop Color="White" Offset="0"/>
