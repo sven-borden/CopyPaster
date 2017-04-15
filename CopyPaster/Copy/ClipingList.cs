@@ -15,9 +15,11 @@ namespace CopyPaster.Copy
 		private ObservableCollection<ClipingImage> clipingsImage = new ObservableCollection<ClipingImage>();
 		public ObservableCollection<ClipingImage> ClipingsImage { get { return this.clipingsImage; } }
 
+		public string ErrorText { get; set; }
+
 		public ClipingList()
 		{
-
+			ErrorText = string.Empty;
 		}
 
 		public void AddClipingImage(BitmapImage _content)

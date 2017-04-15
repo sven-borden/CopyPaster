@@ -47,6 +47,7 @@ namespace CopyPaster
 				{
 					c.LastModified = c.LastModified.Add(new TimeSpan(10)) ;
 				}
+				ErrorBox.Text = clipList.ErrorText;
 			};
 
 			timer.Start();

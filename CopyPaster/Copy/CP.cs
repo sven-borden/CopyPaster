@@ -67,7 +67,7 @@ namespace CopyPaster.Copy
 			}
 			catch(Exception ex)
 			{
-
+				listText.ErrorText = ex.Message;
 			}
 		}
 
@@ -82,7 +82,7 @@ namespace CopyPaster.Copy
 			}
 			catch (Exception ex)
 			{
-
+				listText.ErrorText = ex.Message;
 			}
 		}
 	}
